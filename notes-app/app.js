@@ -1,9 +1,4 @@
-const fs = require('fs')
+// récupère les variables du fichier dans utilsVar
+const utilsVar = require('./utils.js')
 
-//fs.writeFileSync('notes.txt', 'Le mec il change de texte')
-try{
-    fs.appendFileSync('notes.txt', "J'ai fait mon test");
-    console.log('Data appended');
-} catch (err) {
-    console.log(err);
-}
+console.log(utilsVar.firstname + ' ' + utilsVar.name)
