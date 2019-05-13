@@ -1,7 +1,6 @@
 const fs = require('fs')
 
-const dataBuffer = fs.readFileSync('1-json.json')
-const dataJson = dataBuffer.toString()
-
-console.log(dataBuffer) // data buffer
-console.log(dataBuffer.toString()) // data buffer parser en string
+const dataBuffer = fs.readFileSync('1-json.json') // récupère fichier
+const dataJSON = dataBuffer.toString() // convertie en string
+const data = JSON.parse(dataJSON) // parse en objet
+console.log(data)
