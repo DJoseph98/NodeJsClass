@@ -2,7 +2,7 @@
 //const utilsVar = require('./utils.js')
 //console.log(utilsVar.concatName)
 const chalk = require('chalk');
-const getNotes = require('./notes.js')
+const notes = require('./notes.js')
 const yargs = require('yargs')
 
 //create add command
@@ -17,7 +17,7 @@ yargs.command({
         // OBJET-----
         title:{
             describe: 'Note title',
-            demandOption: false,
+            demandOption: true,
             type: 'string'
         },
         body:{
@@ -28,16 +28,23 @@ yargs.command({
         //----
     },
     handler: function (argv) {
-        console.log('Title: ',argv.title)
-        console.log('Description : ',argv.description)
+      notes.addNote(argv.title,argv.body)
     }
 })
 
 yargs.command({
     command: 'remove',
-    describe: 'removing note',
-    handler: function () {
-        console.log('note removed')
+    describe: 'removing a note',
+    builder:{
+      title:{
+          describe : 'Note title',
+          demandOption: true,
+          type: 'string'
+      }
+
+    },
+    handler: function (argv) {
+        notes.deleteNote(argv.title)
     }
 })
 
