@@ -1,17 +1,7 @@
 const fs = require('fs')
-const book = {
-    title:'Karma-Sutra',
-    author:'Steve Abdel Karim'
-}
 
-const bookJSON = JSON.stringify(book)
-// écrit dans json fichier
-fs.writeFileSync('1-json.json', bookJSON)
+const dataBuffer = fs.readFileSync('1-json.json')
+const dataJson = dataBuffer.toString()
 
-// // String to object
-// const bookJSON = JSON.stringify(book)
-// console.log(bookJSON)
-//
-// // Object to string
-// const parsedData = JSON.parse(bookJSON)
-// console.log(parsedData.author)
+console.log(dataBuffer) // data buffer
+console.log(dataBuffer.toString()) // data buffer parser en string
