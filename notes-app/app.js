@@ -1,7 +1,7 @@
 // récupère les variables du fichier dans utilsVar
 //const utilsVar = require('./utils.js')
 //console.log(utilsVar.concatName)
-const chalk = require('chalk');
+const chalk = require('chalk')
 const notes = require('./notes.js')
 const yargs = require('yargs')
 

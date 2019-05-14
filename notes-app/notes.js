@@ -1,12 +1,12 @@
 const fs = require('fs')
-const chalk = require('chalk');
+const chalk = require('chalk')
 
 const addNote = (title, body) => {
     const notes = loadNotes()
     //stock tout les doublons
     //const duplicateNotes = notes.filter((note) => note.title === title) // itère sur chaque contenu jusqu'a la fin
     const duplicateNote = notes.find((note) => note.title === title)    // s'arrète après avoir trouvé
-
+    //debugger //die en PHP -> node inspect ... pour le prendre en compte
     if(!duplicateNote){
         notes.push({
             title: title,
