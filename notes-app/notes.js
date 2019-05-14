@@ -1,5 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk');
+
 const addNote = function(title, body){
     const notes = loadNotes()
     //stock tout les doublons
@@ -38,6 +39,18 @@ const saveNotes = function(notes){
 const deleteNote = function(title){
     const notes = loadNotes()
 
+    // méthode cours --> regénère une nouvelle liste dans le champ----------------------
+    const NotesToKeep = notes.filter(function(note){
+        return note.title !== title
+    })
+    if(notes.length > NotesToKeep.length){
+        console.log(chalk.green.inverse('Notes removed !'))
+        saveNotes(NotesToKeep)
+    }else{
+        console.log(chalk.red.inverse('No note found !'))
+    }
+
+
     // //methode 1 moi + internet --> garde la liste et supprime le champ-----------------------------------------
     // const duplicateNotes = notes.filter(function(note){ // filtre données tableau
     //     return note.title === title // retourne true si exist
@@ -51,17 +64,6 @@ const deleteNote = function(title){
     //     console.log(chalk.red.inverse('No note found !'))
     // }
     // //----------------------------------------------------------
-
-    // méthode cours --> regénère une nouvelle liste dans le champ----------------------
-    const NotesToKeep = notes.filter(function(note){
-        return note.title !== title
-    })
-    if(notes.length > NotesToKeep.length){
-        console.log(chalk.green.inverse('Notes removed !'))
-        saveNotes(NotesToKeep)
-    }else{
-        console.log(chalk.red.inverse('No note found !'))
-    }
 
 }
 
