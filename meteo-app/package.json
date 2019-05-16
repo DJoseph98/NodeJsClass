@@ -1,0 +1,15 @@
+{
+  "name": "meteo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mapbox-gl": "^0.54.0",
+    "request": "^2.88.0"
+  }
+}
