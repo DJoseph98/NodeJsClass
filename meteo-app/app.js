@@ -1,12 +1,23 @@
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
-geocode('Monaco', (error, data) => {  // convention 2 arguments error + data pour des fonctions de callback
-    console.log("Error", error)
-    console.log("Data", data)
-})
+const city = process.argv[2] // argv est ce que nous écrivons dans la console après notre fichier
 
-forecast(43, 7, (error, data) => {  // convention 2 arguments error + data pour des fonctions de callback
-    console.log("Error", error)
-    console.log("Data", data)
-})
+if (city) {
+    geocode(city, (error, dataGeocode) => {  // convention 2 arguments error + data pour des fonctions de callback
+        if (error) {
+            return console.log(error)
+        }
+        forecast(dataGeocode.latitude, dataGeocode.longitude, (error, forecastData) => {  // convention 2 arguments error + data pour des fonctions de callback
+            if (error) {
+                return console.log(error)
+            }
+
+            console.log(dataGeocode.location)
+            console.log(forecastData)
+        })
+    })
+} else {
+    console.log('Enter a location !')
+}
+
