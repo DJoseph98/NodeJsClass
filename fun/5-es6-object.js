@@ -19,7 +19,7 @@ const user = {
 
 // Object destructuring
 
-const {name, age, location} = user // on peut maintenant utiliser les propriété de l'objet comme variable classique
+const { name, age, location } = user // on peut maintenant utiliser les propriété de l'objet comme variable classique
 console.log(name, age, location, test)
 
 // const {name: productName, age, location} = user // on peut rename la propriété avec un nouveau pour éviter les conflits
