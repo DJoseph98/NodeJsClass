@@ -1,21 +1,21 @@
+const path =  require('path')   //lib de nodeJS pour gérer les assets
 const express = require('express')
 
+// console.log(__dirname)
+// console.log(path.join(__dirname, '../public'))
+
 const app = express()
+const publicDirectoryPath = path.join(__dirname, '../public')
 
-app.get('', (req, res) => { // controller
-    res.send('Hello express!')
-})
-
-app.get('/help', (req, res) => { // controller
-    res.send('Help page')
-})
-
-app.get('/about', (req, res) => { // controller
-    res.send('About page')
-})
+app.use(express.static(publicDirectoryPath))
 
 app.get('/weather', (req, res) => { // controller
-    res.send('weather app')
+    res.send([{
+        lat: 25,
+        long: 23
+    }, {
+        city: 'Monaco'
+    }])
 })
 
 app.listen(3000, () =>{  //port server
