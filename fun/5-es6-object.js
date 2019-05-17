@@ -22,3 +22,9 @@ const user = {
 
 // const {name: productName, age, location, varexistepas = 5} = user // on peut set des variables avec une valeur par défault si la propriété existe pas
 // console.log(varexistepas)
+
+const fonctionAvecDestructurationObjet = (type, { name, age }) => { // Accède au propriété de l'objet directement dans les paramètres de la fonction
+    console.log(type, name, age)
+}
+
+fonctionAvecDestructurationObjet('test', user)
