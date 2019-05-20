@@ -44,12 +44,27 @@ app.get('/help', (req, res) => { // controller + route
 })
 
 app.get('/weather', (req, res) => { // controller + route
-    res.send([{
-        lat: 25,
-        long: 23
-    }, {
-        city: 'Monaco'
-    }])
+    if(!req.query.adress) {
+        return res.send({
+            error: 'Error, Adress must be provided'
+        })
+    }
+    res.send({
+        forecast: 'It Monaco',
+        location: 'Monaco',
+        adress: req.query.adress
+    })
+})
+
+app.get('/products', (req, res) => { // controller + route
+    if (!req.query.rating){ // regarde si dans ma requete, j'ai une key de nom "rating"
+        return res.send({
+            error :"Error, you must provide a rating item"
+        })
+    }
+    res.send({
+        product: []
+    })
 })
 
 app.get('/help/units', (req, res) => {
