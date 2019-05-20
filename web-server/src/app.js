@@ -52,6 +52,20 @@ app.get('/weather', (req, res) => { // controller + route
     }])
 })
 
+app.get('/help/units', (req, res) => {
+    res.render('error',
+        {   number: '404',
+            error: 'Error, article not found'
+        })
+})
+
+app.get('*', (req, res) => { // match toutes les routes qui existent pas -> !!!! Le mettre à la fin car si mit au dessus, n'importe quel lien renverra sur la page d'erreur.
+    res.render('error',
+        {   number: '404',
+            error: 'Error 404, page not found'
+        })
+})
+
 app.listen(3000, () =>{  //port server
     console.log('Server is up on port 3000.')
 })
