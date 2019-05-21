@@ -53,7 +53,7 @@ app.get('/weather', (req, res) => { // controller + route
         })
     }
 
-    geocode(req.query.adress, (error, {latitude, longitude, location} ) => {  // convention 2 arguments error + data pour des fonctions de callback
+    geocode(req.query.adress, (error, {latitude, longitude, location} = {} ) => {  // convention 2 arguments error + data pour des fonctions de callback
         if (error) {
             return  res.send({error})
         }
