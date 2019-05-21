@@ -1,6 +1,9 @@
 const path =  require('path')   //lib de nodeJS pour gérer les assets
 const express = require('express')
 const hbs = require('hbs')
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
+
 // console.log(__dirname)
 // console.log(path.join(__dirname, '../public'))
 
@@ -49,11 +52,24 @@ app.get('/weather', (req, res) => { // controller + route
             error: 'Error, Adress must be provided'
         })
     }
-    res.send({
-        forecast: 'It Monaco',
-        location: 'Monaco',
-        adress: req.query.adress
+
+    geocode(req.query.adress, (error, {latitude, longitude, location} ) => {  // convention 2 arguments error + data pour des fonctions de callback
+        if (error) {
+            return  res.send({error})
+        }
+        forecast(latitude, longitude, (error, forecastData) => {  // convention 2 arguments error + data pour des fonctions de callback
+            if (error) {
+                return  res.send({error})
+            }
+
+            res.send({
+                location,
+                forecast: forecastData,
+                adress: req.query.adress
+            })
+        })
     })
+
 })
 
 app.get('/products', (req, res) => { // controller + route

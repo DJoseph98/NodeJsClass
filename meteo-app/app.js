@@ -1,5 +1,5 @@
-const geocode = require('./utils/geocode')
-const forecast = require('./utils/forecast')
+const geocode = require('../web-server/src/utils/geocode')
+const forecast = require('../web-server/src/utils/forecast')
 
 const city = process.argv[2] // argv est ce que nous écrivons dans la console après notre fichier
 
