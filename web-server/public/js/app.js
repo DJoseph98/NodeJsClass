@@ -1,14 +1,21 @@
 const weatherForm = document.querySelector('form') //selectionne le formulaire form
 const locationInput = document.querySelector('input') // selectionne l'input du formulaire
+const messageOne = document.querySelector('#paragraphe1') // selectionne paragrahpe1
+const messageTwo = document.querySelector('#paragraphe2') // selectionne paragrahpe2
+
+// messageOne.textContent = 'dzadza' // Set text content to paragraphe1
 
 const fecthForecast = (location) => {
     const locationEncode = encodeURI(location)
+    messageOne.textContent = 'Fetching...'
+    messageTwo.textContent = ''
     fetch('http://localhost:3000/weather?adress=' + locationEncode).then((response) => {
         response.json().then( (data) => {
             if(data.error){
-                console.log(data.error)
+                messageOne.textContent = data.error
             }else{
-                console.log(data.forecast)
+                messageOne.textContent = data.location
+                messageTwo.textContent = data.forecast
             }
 
         })
