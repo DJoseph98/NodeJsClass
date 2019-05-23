@@ -9,7 +9,7 @@ const fecthForecast = (location) => {
     const locationEncode = encodeURI(location)
     messageOne.textContent = 'Fetching...'
     messageTwo.textContent = ''
-    fetch('http://localhost:3000/weather?adress=' + locationEncode).then((response) => {
+    fetch('/weather?adress=' + locationEncode).then((response) => {
         response.json().then( (data) => {
             if(data.error){
                 messageOne.textContent = data.error

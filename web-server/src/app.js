@@ -8,6 +8,7 @@ const forecast = require('./utils/forecast')
 // console.log(path.join(__dirname, '../public'))
 
 const app = express()
+const port = process.env.PORT || 3000    //condition port d'écoute
 
 // Path Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -97,6 +98,6 @@ app.get('*', (req, res) => { // match toutes les routes qui existent pas -> !!!!
         })
 })
 
-app.listen(3000, () =>{  //port server
-    console.log('Server is up on port 3000.')
+app.listen(port, () =>{  //port server
+    console.log('Server is up on port ' + port)
 })
